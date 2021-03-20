@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keluaran JavaScript</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Macam-macam keluaran JavaScript</h1>
+
+    <p><i>keyword : output js</i></p>
+
+    <ol>
+       
+        <li><h3>Merubah isi property elemen HTML, pakai cara DOM</h3></li>
+            <p>Merubah property innerHTML dari sebuah elemen HTML is cara umum utk menampilkan data di HTML</p>
+            <code>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;head&gt; <br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                &lt;h1 id="hehe"&gt;&lt;/h1&gt;<br><br>
+
+                &lt;script&gt; <br>
+                    document.getElementById("hehe").innerHTML = "eyo gais"; <br>
+                &lt;/script&gt;<br> <br>
+            
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </code><br><br>
+
+
+        <li><h3>Keluaran ke HTML, pakai document.write() </h3></li>
+            <p>Menggunakan document.write() setelah dokumen HTML dimuat, akan menghapus semua HTML yang ada <a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_output_write_over">(Never call document.write after the document has finished loading. It will overwrite the whole document)</a></p>
+            <code>
+                &lt;body&gt;<br>
+                &lt;h1 id="hehe"&gt;&lt;/h1&gt;<br><br>
+
+                &lt;script&gt; <br>
+                    document.write('eyo gais'); <br>
+                &lt;/script&gt;<br> <br>
+            
+                &lt;/body&gt;<br>
+            </code><br><br>
+
+        <li><h3>Pakai window.alert()</h3></li>
+        <p>menggunakan kotak peringatan untuk menampilkan data</p>
+            <code>
+                &lt;body&gt;<br>
+                &lt;h1 id="hehe"&gt;&lt;/h1&gt;<br><br>
+
+                &lt;script&gt; <br>
+                    alert('hey winner');<br>
+                &lt;/script&gt;<br> <br>
+            
+                &lt;/body&gt;<br>
+            </code><br><br>
+        
+
+        <li><h3>Pakai console.log()</h3></li>
+        <p>Untuk tujuan debugging, nanti hasil akan muncul diconsole browser</p>
+            <code>
+                &lt;body&gt;<br>
+                &lt;h1 id="hehe"&gt;&lt;/h1&gt;<br><br>
+
+                &lt;script&gt; <br>
+                    console.log('thank you for visiting');<br>
+                &lt;/script&gt;<br> <br>
+            
+                &lt;/body&gt;<br>
+            </code><br><br>
+    </ol>
+    
+    <a href="../indox.html">Back to Home</a>
+</body>
+</html>

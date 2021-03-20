@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Tipe Data JavaScript</h1>
+
+    <p><i>keyword : tipe data js</i></p>
+
+    <h3>konsep number & string js</h3>
+    <p>Variabel JavaScript dapat menampung byk tipe data spt angka, string, objek, dll. <br>
+        Saat menambahkan angka dan string, JavaScript akan memperlakukan angka tersebut sebagai string</p>
+    <ul>
+        <li>number duluan</li>
+        <code>var x = 16 + 4 + "Volvo";</code>
+        <p>JavaScript memperlakukan 16 dan 4 sebagai angka, hingga mencapai "Volvo" <br>
+            hasil => 20Volvo</p>
+
+        <li>string duluan</li>
+        <code>var x = "Volvo" + 16 + 4;</code>
+        <p>karena operan pertama adalah string, semua operan diperlakukan sebagai string <br>
+            hasil => Volvo164</p>
+    </ul>
+
+    <h3>konsep timpa variabel js</h3>
+    <p>JavaScript memiliki tipe data dinamis. Ini berarti nama var yang sama dapat digunakan untuk menampung tipe data yang berbeda</p>
+    <code><pre>
+        var x;           // Now x is undefined
+        x = 5;           // Now x is a Number
+        x = "John";      // Now x is a String 
+    </pre></code>
+
+
+    <ol>
+        <li><h3>Strings</h3></li>
+        <p>ditulis dengan tanda kutip ganda/tunggal</p>
+            <code>
+                var carName1 = "Volvo XC60";   // Using double quotes <br>
+                var carName2 = 'Volvo XC60';   // Using single quotes
+            </code>
+
+
+        <li><h3>Numbers</h3></li>
+            <p>jika dlm desimal tambahkan titik</p>
+            <code>
+                var x1 = 34.00;     // Written with decimals <br>
+                var x2 = 34;        // Written without decimals
+            </code>
+
+        <li><h3>Booleans</h3></li>
+            <p>hanya ada 2 keluaran = true & false</p>
+            <code><pre>
+                var x = 5;
+                var y = 5;
+                var z = 6;
+                (x == y)       // Returns true
+                (x == z)       // Returns false
+            </pre></code>
+        
+        <li><h3>Arrays</h3></li>
+            <p>ditulis didalam [ ], dipisah dgn koma(,) , perhitungan item dimulai dari 0</p>
+            <code>
+                var cars = ["Saab", "Volvo", "BMW"];
+            </code>
+
+        <li><h3>Arrays</h3></li>
+            <p>ditulis didalam { }, ditulis dgn pasangan nama: nilai, dipisah dgn koma(,) , perhitungan item dimulai dari 0</p>
+            <code>
+                var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+            </code>
+        
+       <li><h3>Identifikasi Tipe Data</h3></li>
+            <p>mengembalikan apa tipe data yg dimaksud</p>
+            <code><pre>
+                typeof ""             // Returns "string"
+                typeof "John Doe"     // Returns "string"
+                typeof 0              // Returns "number"
+                typeof 3.14           // Returns "number"
+                typeof (3)            // Returns "number"
+                typeof (3 + 4)        // Returns "number"
+            </pre></code>
+
+        <li><h3>Undefined</h3></li>
+            <p>variabel tanpa nilai, memiliki nilai undefined. Jenisnya juga undefined</p>
+            <code>
+                var car;    // Value is undefined, type is undefined 
+            </code>
+        
+        <li><h3>Empty Values</h3></li>
+            <p>Nilai kosong tidak ada hubungannya dengan undefined</p>
+            <code>
+                var car = "";    // The value is "", the typeof is "string"
+            </code>
+
+        <li><h3>Null</h3></li>
+            <p>null js adalah "tidak ada". Itu seharusnya menjadi sesuatu yang tidak ada. Sayangnya, dalam JavaScript, tipe datanya null adalah sebuah objek. <br></p>
+            <code>
+                var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}; <br>
+                person = null;    // Now nilainya = null, tp tipe datanya masih sebuah obj <br><br>
+                var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}; <br>
+                person = undefined;   // Now baik nilai & tipenya = undefined
+            </code>
+
+        <h3>Perbedaan Undefined dan Null</h3>
+            <p>undefined dan null memiliki nilai yang sama tetapi jenisnya berbeda</p>
+            <code><pre>
+                typeof undefined           // undefined
+                typeof null                // object
+
+                null === undefined         // false
+                null == undefined          // true 
+            </pre>
+            </code>
+        
+    </ol>
+    
+    <a href="../indox.html">Back to Home</a>
+</body>
+</html>

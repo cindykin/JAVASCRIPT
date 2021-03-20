@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Objects</title>
+</head>
+<body>
+    <h1>JS Objects</h1>
+
+    <p><i>keyword : objek js</i></p>
+    <img src="object.png" alt="w3 obj">
+
+    <ul>
+        <li>kamu udah tau bahwa variabel javascript = wadah untuk nilai data</li>
+        <li>syntax dibawah untuk memberikan nilai "harry" ke variabel mobil</li>
+        <code>
+            var car = "harry";
+        </code>
+        <li>object juga variabel, bedanya bisa menyimpan lebih byk nilai</li>
+        <li>syntax dibawah untuk memberikan banyak nilai "harry", "500", "white" ke obj mobil</li>
+        <code>
+            var car = { <br>
+                name:"harry", <br> 
+                model:"500", <br>
+                color:"white" <br>
+            }; <br>
+        </code>
+    </ul>
+
+    <h2>Definisikan Object</h2>
+        <ul>
+            <li>buat object dgn obj literal</li>
+            <li>name, age, eyeColor = property</li>
+            <li>Shiro, 30, blue = value</li>
+            <li>sayHello = method/function</li><br>
+            <code>
+                var human = { <br>
+                    name: "Shiro", <br>
+                    age: 30, <br>
+                    eyeColor: "blue", <br>
+                    sayHello : function() { <br>
+                        return "I'm" + this.name + "I'd like to meet you"; <br>
+                        //"this" mengacu pada pemilik property/method<br>
+                    } <br>
+                }
+            </code><br>
+        </ul>    
+
+       
+
+    
+    <h2>Akses Propery Object</h2>
+        <ol>
+            <li>cara 1 => objectName.propertyName</li><br>
+            <code>
+                human.eyeColor = "yellow";  //ganti value <br>
+                alert(human.name);  //tampilkan value <br>
+            </code><br>
+            <li>cara 2 => objectName["propertyName"]</li><br>
+            <code>
+                human["name"] = "Aries"; //ganti value <br>
+                alert(human["name"]);  //tampilkan value <br>
+            </code>
+        </ol>
+
+</body>
+</html>

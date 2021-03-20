@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX COURSE</title>
+</head>
+<body>
+    
+<div id="text"></div>    
+
+
+<script>
+    const request = new XMLHttpRequest();
+    // console.log(request)
+
+    request.open('GET', 'fake.txt', true);
+    
+    // opsional - saat loading dijalankan 
+    // request.onprogress = function(){
+    //     console.log('readystate : ' + request.readyState)
+    // }
+
+
+    // onload (readystatenya hanya return 4)
+    request.onload = function() {
+     console.log('readystate : ' + request.readyState)
+        if(this.status == 200) {
+            document.getElementById('text').innerHTML = this.responseText
+        } else if(this.status == 404) {
+            document.getElementById('text').innerHTML = 'Not found the file you mean ! Please double check the file name'
+        }
+    }
+    
+
+
+    // onreadystatechange ( readystatenya berjalan 1-4)
+    // request.onreadystatechange =  function(){
+    //     // console.log('readystate : ' + request.readyState)
+    //     if(this.readyState == 4 && this.status == 200){
+    //         console.log(this.responseText);
+    //     }
+    // }
+
+
+
+    request.send();
+</script>
+</body>
+</html>

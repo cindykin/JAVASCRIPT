@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <button id="btn">Load Github Users</button>
+
+    <br><br>
+    <h1>Github Users List</h1>
+    <div id="fill"></div>
+
+<script>
+    document.getElementById('btn').addEventListener('click', loadUser);
+
+    function loadUser() {
+        const request = fetch('https://api.github.com/users')
+        // console.log(request) // return promise
+        request.then(response => response.json()) //return promise response diubah ke json, tapi masih berbentuk promise
+            .then(users => {
+                console.log(users)
+                let output;
+                for (i in users) {
+                    output += `
+                    <img src="${users[i].avatar_url}" height="70px">
+                    <ul>
+                        <li>ID : ${users[i].id}</li>
+                        <li>Username : <a href="${users[i].html_url}">${users[i].login}</a></li>
+                    </ul>`;
+                }
+                document.getElementById('fill').innerHTML = output
+            })
+    }
+</script>
+</body>
+</html>
