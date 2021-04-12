@@ -50,7 +50,7 @@ const simpanKontak = (nama, notelp, email) => {
 
     fs.writeFileSync('./data/contacts.json', JSON.stringify(users))
             
-    clog('Data sudah tersimpan dengan baik\nTerimakasih sudah menggunakan layanan kami!')
+    clog(chbasicstyle(`Kontak telah tersimpan\nTerimakasih sudah menggunakan layanan kami!`))
 }
 
 
@@ -70,7 +70,37 @@ const listKontak = () => {
 
 const detailKontak = (nama) => {
     const users = getKontak()
-    clog(chbasicstyle('Detail Kontak : '))
+
+    const us = users.find(user => user.nama.toLowerCase() === nama.toLowerCase())
+
+    if(!us) {
+        clog(chwarnstyle(`tidak dapat menemukan kontak dengan nama ${nama}`))
+        return false
+    }
+
+    clog(`Nama : ${us.nama}
+    NoTelp : ${us.notelp}`)
+
+    if(us.email){
+        clog(`Email : ${us.email}`)
+    }
 
 }
-module.exports = { simpanKontak, listKontak, detailKontak }
+
+
+const hapusKontak = (nama) => {
+    const users = getKontak()
+    const newUsers = users.filter(user => user.nama !== nama)
+    
+    if(users.length === newUsers.length) {
+        clog(chwarnstyle(`tidak dapat menemukan kontak dengan nama ${nama}`))
+        return false
+    }
+
+
+    fs.writeFileSync('./data/contacts.json', JSON.stringify(newUsers))
+            
+    clog(chbasicstyle(`Kontak ${nama} sudah terhapus\nTerimakasih sudah menggunakan layanan kami!`))
+}
+
+module.exports = { simpanKontak, listKontak, detailKontak, hapusKontak }
