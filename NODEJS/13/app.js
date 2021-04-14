@@ -2,27 +2,29 @@ const http = require('http')
 const fs = require('fs')
 const port = 3000
 
+const renderHTML = (fileHTML, res) => {
+    fs.readFile(fileHTML, (err, data) => {
+        if (err) {
+            res.writeHead(404)
+            res.write('file tidak ditemukan')
+        } else {
+            res.write(data)
+        }
+        res.end()
+    })
+}
+
 http
     .createServer((req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/html' })
 
         const url = req.url;
         if (url === '/about') {
-            res.write('about page')
-            res.end()
+            renderHTML('./about.html', res)
         } else if(url === '/contact') {
-            res.write('contact page')
-            res.end()   
+            renderHTML('./contact.html', res)
         } else {
-            fs.readFile('./index.html', (err, data) => {
-                if (err) {
-                    res.writeHead(404)
-                    res.write('file tidak ditemukan')
-                } else {
-                    res.write(data)
-                }
-                res.end()
-            })
+            renderHTML('./index.html', res)
         }
 
     })
