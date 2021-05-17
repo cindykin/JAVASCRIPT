@@ -2,14 +2,20 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator');
-const session = require('express-session')
-const cookieParser = require('cookie-parser')
-const flash = require('connect-flash')
 const app = express()
 const port = 3000
 const {getKontak, findKontak , addKontak, cekDuplicateName, cekDuplicateTelp} = require('./utils/contacts')
 
+
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+const flash = require('connect-flash')
 app.use(cookieParser('secret'))
+// app.configure(function() {
+//   app.use(express.cookieParser('keyboard cat'));
+//   app.use(express.session({ cookie: { maxAge: 60000 }}));
+//   app.use(flash());
+// });
 app.use(
   session({
     cookie: {maxAge: 6000},
@@ -18,14 +24,11 @@ app.use(
     saveUninitialized: true,
   })
 )
-app.use(flash)
+app.use(flash())
+
 
 app.set('view engine', 'ejs')
-
-// third party middleware   
 app.use(expressLayouts)
-
-// build in middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 
