@@ -121,6 +121,22 @@ app.post('/contact', [
 
 
 
+app.post('/contact/update', 
+
+
+  (req,res) => {  
+  if(req.body.oldname !== req.body.name) {
+    if(cekDuplicateName(req.body.name)) {
+      res.send('nama telah dipakai')
+    }
+  }
+
+  
+  res.send(req.body)
+})
+
+
+
 
 app.use('/', (req, res)=> {
     res.status(404)
