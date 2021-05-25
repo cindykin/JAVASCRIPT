@@ -30,18 +30,6 @@ const findKontak = (name) => {
     return detail
 }
 
-const findKontakTelp = (telp) => {
-    const contacts = getKontak()
-    
-    const detail = contacts.find(contact => contact.telp === telp)
-
-    if(!detail) {
-        clog('gaada kontak dengan telp spt itu')
-        return false
-    } 
-
-    return detail
-}
 
 const saveKontak = (contacts) => {
     fs.writeFileSync(filePath, JSON.stringify(contacts))
@@ -64,10 +52,6 @@ const cekDuplicateName = (name) => {
     return contacts.find(contact => contact.name === name)
 }
 
-const cekDuplicateTelp = (telp) => {
-    const contacts = getKontak()
-    return contacts.find(contact => contact.telp === telp)
-}
 
 const deleteKontak = (name) => {
     const contacts = getKontak()
@@ -81,6 +65,15 @@ const deleteKontak = (name) => {
     return 200
 }
 
+const editKontak = (changedContact) => {
+    const contacts = getKontak()
+
+    const newContacts = contacts.filter(contact => contact.name !== changedContact.oldname)
+    delete changedContact.oldname
+    newContacts.push(changedContact)
+    saveKontak(newContacts)
+}
 
 
-module.exports = { getKontak, findKontak , addKontak, cekDuplicateName, cekDuplicateTelp, deleteKontak }
+
+module.exports = { getKontak, findKontak , addKontak, cekDuplicateName, deleteKontak, editKontak }

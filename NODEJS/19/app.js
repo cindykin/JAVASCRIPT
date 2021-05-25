@@ -4,7 +4,7 @@ const expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator');
 const app = express()
 const port = 3000
-const {getKontak, findKontak , addKontak, cekDuplicateName, deleteKontak} = require('./utils/contacts')
+const {getKontak, findKontak , addKontak, cekDuplicateName, deleteKontak, editKontak} = require('./utils/contacts')
 
 
 const session = require('express-session')
@@ -105,15 +105,14 @@ app.post('/contact', [
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // return res.status(400).json({ errors: errors.array() });
       res.render('add', {
         title: 'Add Contact',
         layout: 'layouts/mainlayout',
         errors : errors.array()
       })
     } else {
-      req.flash('msg', 'data kontak berhasil ditambahkan')
       addKontak(req.body)
+      req.flash('msg', 'data kontak berhasil ditambahkan')
       res.redirect('/contact')
     }
   }
@@ -122,17 +121,30 @@ app.post('/contact', [
 
 
 app.post('/contact/update', 
+[
+  body('name').custom(value => {
+    if(body('oldname') !== value && cekDuplicateName(value)) {
+        throw new Error('the name has been used')
+    }
+    return true; 
+  })
 
+],
 
   (req,res) => {  
-  if(req.body.oldname !== req.body.name) {
-    if(cekDuplicateName(req.body.name)) {
-      res.send('nama telah dipakai')
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('edit', {
+        title: 'Edit Contact',
+        layout: 'layouts/mainlayout',
+        errors : errors.array(),
+        contact : req.body
+      })
+    } else {
+      editKontak(req.body)
+      req.flash('msg', 'data kontak berhasil diganti')
+      res.redirect('/contact')
     }
-  }
-
-  
-  res.send(req.body)
 })
 
 
@@ -144,5 +156,5 @@ app.use('/', (req, res)=> {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`i love you at http://localhost:${port}`)
 })

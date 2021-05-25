@@ -15,7 +15,7 @@
 
 <form action="/contact/update" method="POST">
 
-    <input type="hidden" name="oldname" value="<%= contact.name %>">
+    <input type="hidden" name="oldname" value="<%= (contact.oldname) ? contact.oldname : contact.name %>">
 
     <div class="mb-3">
         <label for="one" class="form-label">Name</label>
