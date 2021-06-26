@@ -1,0 +1,41 @@
+<h1>contact List</h1>
+
+<a href="/contact/add" class="btn btn-primary">Add Contact</a>
+
+
+
+
+<% if (contacts.length === 0) { %>
+  <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>
+      Sorry, our data are empty
+    </div>
+  </div>
+<% } else { %>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Telp</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach((contact,no) => { no++ %>
+        <tr>
+          <th scope="row"><%= no %> </th>
+          <td><%= contact.name %> </td>
+          <td><%= contact.telp %> </td>
+          <td>
+            <a href="/contact/<%= contact.name %> " class="btn btn-primary"><i class="bi bi-info-circle"></i> detail</a>
+            <a href="/contact/edit/<%= contact.name %> " class="btn btn-warning">edit</a>
+            <a href="/contact/delete/<%= contact.name %> " class="btn btn-danger" onclick="confirm('sure to delete?')"></i>delete</a>
+          </td>
+        </tr>
+      <% }) %> 
+      </tbody>
+  </table>
+
+<% } %> 

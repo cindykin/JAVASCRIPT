@@ -1,0 +1,22 @@
+<h1>Student Detail</h1>
+<hr><br>
+
+<% if (!contact) { %>
+  <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>
+      Sorry, we don't have any contact with that name
+    </div>
+  </div>
+  <% } else { %>
+    
+    <div>
+      <h3><%= contact.name %></h3>
+      <p><%= contact.nohp %> </p>
+      <%if(contact.email) { %>
+        <p><%= contact.email %></p>
+      <% } %>
+    </div>
+    
+<% } %> 
+    <a href="/contact">back to contact list</a>
